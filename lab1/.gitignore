@@ -1,0 +1,8 @@
+*.xpr
+*.bat
+*.log
+*.jou
+*.dbg
+*.wdm
+*.obj
+*.exe
