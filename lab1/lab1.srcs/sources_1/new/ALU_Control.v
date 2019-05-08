@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/08 10:19:26
+// Create Date: 2019/05/08 11:06:21
 // Design Name: 
-// Module Name: NPC
+// Module Name: ALU_Control
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,12 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module NPC(
-    input branch,
-    input jump,
-    input zero,
-    input [31:2]pc,
-    input [31:0]target,
-    output [31:2]npc
+module ALU_Control(
+
     );
 endmodule

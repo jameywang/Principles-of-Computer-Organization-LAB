@@ -21,6 +21,16 @@
 
 
 module PC(
-
+    input   clk,
+    input   Reset,
+    input   [31:2]NPC,
+    output  reg PC[31:2]
     );
+    always@(posedge clk or Reset)
+    begin
+        if(Reset==1'b0)
+            pc <= 30'b110000_0000_0000;
+        else
+            pc <= NPC;
+    end
 endmodule
