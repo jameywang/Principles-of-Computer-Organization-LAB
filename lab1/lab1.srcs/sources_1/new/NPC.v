@@ -21,11 +21,13 @@
 
 
 module NPC(
-    input branch,
-    input jump,
-    input zero,
-    input [31:2]pc,
-    input [31:0]target,
-    output [31:2]npc
+    input   branch,
+    input   jump,
+    input   zero,
+    input   [31:2]pc,
+    input   [31:0]target,
+    inout   [31:2]din,
+    output  [31:2]npc
     );
+    wire 
 endmodule

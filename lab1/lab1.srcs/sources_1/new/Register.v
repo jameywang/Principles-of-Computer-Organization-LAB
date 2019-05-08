@@ -21,6 +21,27 @@
 
 
 module Register(
-
+    input   [4:0]addr1,
+    input   [4:0]addr2,
+    input   [4:0]addr,
+    input   [31:0]data,
+    input   RegWrite,
+    input   clk,
+    output  [31:0]busA,
+    output  [31:0]busB,
     );
+
+    reg[31:0]   register[31:0];
+
+    initial
+        register[0] = 32'b0;
+
+    assign  busA = register[addr1];
+    assign  busB = register[addr2];
+
+    always@(posedge clk)
+    begin
+        if(RegWrite &&(addr!=5b'0))      //do not change reg[0]
+            register[addr] <= data;
+    end
 endmodule
