@@ -24,7 +24,7 @@ module PC(
     input   clk,
     input   Reset,
     input   [31:2]NPC,
-    output  reg PC[31:2]
+    output  reg [31:2]PC
     );
     always@(posedge clk or Reset)
     begin
