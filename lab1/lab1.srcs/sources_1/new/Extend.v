@@ -22,7 +22,7 @@
 module Extend(
     input   instr[15:0],
     input   signal,
-    output dout[31:0]
+    output  dout[31:0]
     );
     
     assign dout = (signal==1'b0) ? {(16'b0),instr[15:0]} : {{16{instr[15]}},instr[15:0]};

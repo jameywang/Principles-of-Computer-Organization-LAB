@@ -25,9 +25,20 @@ module NPC(
     input   jump,
     input   zero,
     input   [31:2]pc,
-    input   [31:0]target,
-    inout   [31:2]din,
+    input   [25:0]Instr,
+    input   [31:0]extend,
     output  [31:2]npc
     );
-    wire 
+
+    always@(branch or jump or zero or pc or Instr or extend)
+    begin
+        if(jump == 1'b1)
+            npc = {{[31:28]pc},{[25:0]Instr}};
+        else if(branch == 1'b1 && zero == 1'b1)
+            npc = pc + 1 + {{[31:0]extend},2'b0};
+        else if(branch == 1'b0)
+            npc = pc +1;
+
+    end
+    
 endmodule
