@@ -33,9 +33,9 @@ module NPC(
     always@(branch or jump or zero or pc or Instr or extend)
     begin
         if(jump == 1'b1)
-            npc = {{[31:28]pc},{[25:0]Instr}};
+            npc = {{pc[31:28]},{Instr[25:0]}};
         else if(branch == 1'b1 && zero == 1'b1)
-            npc = pc + 1 + {{[31:0]extend},2'b0};
+            npc = pc + 1 + {{extend[31:0]},2'b0};
         else if(branch == 1'b0)
             npc = pc +1;
 
