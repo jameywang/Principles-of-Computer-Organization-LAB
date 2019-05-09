@@ -28,7 +28,7 @@ module Register(
     input   RegWrite,
     input   clk,
     output  [31:0]busA,
-    output  [31:0]busB,
+    output  [31:0]busB
     );
 
     reg[31:0]   register[31:0];
@@ -41,7 +41,7 @@ module Register(
 
     always@(posedge clk)
     begin
-        if(RegWrite &&(addr!=5b'0))      //do not change reg[0]
+        if(RegWrite &&(addr!=5'b0))      //do not change reg[0]
             register[addr] <= data;
     end
 endmodule

@@ -40,9 +40,9 @@ module ALU(
         else if(ALUctr==3'b011)
             result = data1 | data2;
         else if(ALUctr==3'b111)
-            result = (data1 < data2) ? 32b'1 : 32b'0;
+            result <= (data1 < data2) ? 32'b1 : 32'b0;
         
-        zero = (output == 32b'0) ? 1b'1 : 1b'0;
+        zero = (output == 32'b0) ? 1'b1 : 1'b0;
 
     end
 endmodule
