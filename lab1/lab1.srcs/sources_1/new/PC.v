@@ -26,7 +26,7 @@ module PC(
     input   [31:2]NPC,
     output  reg [31:2]PC
     );
-    always@(posedge clk or Reset)
+    always@(posedge clk or nesedge Reset)
     begin
         if(Reset==1'b0)
             pc <= 30'b110000_0000_0000;
