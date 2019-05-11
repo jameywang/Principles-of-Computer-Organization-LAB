@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/04/27 15:47:00
+// Create Date: 2019/05/11 16:35:54
 // Design Name: 
 // Module Name: testbench
 // Project Name: 
@@ -22,16 +22,13 @@
 
 module testbench(
     );
-    reg [2:0]in;
-    wire [7:0]out;
+    reg reset,clk;
+    MIPS mips(clk,reset);
     initial
     begin
-        in=3'b000;
+        clk = 1'b0;
+        reset = 0;
     end
-    decoder Decoder(
-        .x(in),
-        .y(out)
-    );
-    always #20in = in + 1;
-    
+    always #20
+        clk = ~clk;
 endmodule
