@@ -27,7 +27,6 @@ module ALU(
     output  [31:0]result,
     output  zero
     );
-    reg[31:0]   result;
 
     always@(data1 or data2 or ALUctr)
     begin
@@ -40,7 +39,7 @@ module ALU(
         else if(ALUctr==3'b011)
             result = data1 | data2;
         else if(ALUctr==3'b111)
-            result <= (data1 < data2) ? 32'b1 : 32'b0;
+            result = (data1 < data2) ? 32'b1 : 32'b0;
         
         zero = (result == 32'b0) ? 1'b1 : 1'b0;
 
