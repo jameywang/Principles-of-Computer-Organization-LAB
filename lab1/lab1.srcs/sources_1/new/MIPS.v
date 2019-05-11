@@ -37,6 +37,6 @@ module MIPS(
     wire    [31:0]data;
 
     datapath datap(clk,reset,aluctr,jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,data,extop);
-    control control1(data[31:26],data[4:0],jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,aluctr,extop);
+    control control1(data[31:26],data[5:0],jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,aluctr,extop);
 
 endmodule
