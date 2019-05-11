@@ -30,10 +30,11 @@ module control(
     output  ALUSrc,
     output  RegWrite,
     output  RegDst,
-    output  [2:0]ALUctr
+    output  [2:0]ALUctr,
+    output  ExtOp
     );
     wire [2:0]ALUop;
     
-    ControlUnit(Instr,ALUop,Jump,Branch,MemtoReg,MemWrite,ALUSrc,RegWrite,RegDst);
+    ControlUnit(Instr,ALUop,Jump,Branch,MemtoReg,MemWrite,ALUSrc,RegWrite,RegDst,ExtOp);
     ALU_Control(ALUop,Instr,ALUctr);
 endmodule

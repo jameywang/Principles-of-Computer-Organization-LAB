@@ -31,7 +31,8 @@ module datapath(
     input   ALUSrc,
     input   RegWrite,
     input   RegDst,
-    output  [31:0]data
+    output  [31:0]data,
+    input   extop
     );
     
     wire    [31:0]BusA;
@@ -49,7 +50,7 @@ module datapath(
 
     ALU alu(BusA,data,ALUctr,aluresult,zero);
     dm_4k dm(aluresult[11:2],BusB,MemWrite,clk,dmout);
-    Extend extend(Instr[15:0],extend1);
+    Extend extend(Instr[15:0],extop,extend1);
     im_4k im(PC[11:2],Instr);
     MUX_5 mux(Instr[20:16],Instr[15:11],RegDst,mux1out);
     Register register(Instr[25:21],Instr[20:16],mux1out,wb,RegWrite,clk,BusA,BusB);

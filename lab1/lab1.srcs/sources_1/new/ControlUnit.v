@@ -29,7 +29,8 @@ module ControlUnit(
     output   MemWrite,
     output   ALUSrc,
     output   RegWrite,
-    output   RegDst
+    output   RegDst,
+    output   Extop
     );
     always@(Instr)
     begin
@@ -41,5 +42,6 @@ module ControlUnit(
         assign  RegWrite = (Instr == 6'b101011) ? 0 : (Instr == 6'b000100) ? 0 : (Instr == 6'b000010) ? 0 : 1;
         assign  RegDst = (Instr == 6'b100011) ? 1 : 0;
         assign  ALUop = (Instr == 6'b000000) ? 3'b001 : (Instr == 6'b100011) ? 3'b000 : (Instr == 6'b101011) ? 3'b000 : (Instr == 6'b000100) ? 3'b100 : 3'b111;
+        assign  Extop = (Instr == 6'b100011) ? 1'b1 : (Instr == 6'b101011) ? 1'b1 : 0;
     end
 endmodule
