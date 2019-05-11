@@ -21,6 +21,19 @@
 
 
 module control(
-
+    input   [31:26]Instr,
+    input   [5:0]func,
+    output  Jump,
+    output  Branch,
+    output  MemtoReg,
+    output  MemWrite,
+    output  ALUSrc,
+    output  RegWrite,
+    output  RegDst,
+    output  [2:0]ALUctr
     );
+    wire [2:0]ALUop;
+    
+    ControlUnit(Instr,ALUop,Jump,Branch,MemtoReg,MemWrite,ALUSrc,RegWrite,RegDst);
+    ALU_Control(ALUop,Instr,ALUctr);
 endmodule
