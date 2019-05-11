@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
  //signal 是无符号拓展和有符号拓展标志，0为无符号拓展
 module Extend(
-    input   instr[15:0],
+    input   [15:0]instr,
     input   extop,
-    output  dout[31:0]
+    output  [31:0]dout
     );
     
     assign dout = (extop==1'b0) ? {(16'b0),instr[15:0]} : {{16{instr[15]}},instr[15:0]};

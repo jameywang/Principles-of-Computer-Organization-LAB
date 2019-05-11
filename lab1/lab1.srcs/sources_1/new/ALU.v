@@ -25,7 +25,7 @@ module ALU(
     input   [31:0]data2,
     input   [2:0]ALUctr,
     output  reg [31:0]result,
-    output  zero
+    output  reg zero
     );
 
     always@(data1 or data2 or ALUctr)

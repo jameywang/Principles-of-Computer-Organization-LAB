@@ -29,8 +29,8 @@ module PC(
     always@(posedge clk or negedge Reset)
     begin
         if(Reset==1'b0)
-            pc <= 30'b110000_0000_0000;
+            PC <= 30'b110000_0000_0000;
         else
-            pc <= NPC;
+            PC <= NPC;
     end
 endmodule

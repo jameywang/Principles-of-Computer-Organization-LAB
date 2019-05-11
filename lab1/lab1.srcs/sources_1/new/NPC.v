@@ -27,7 +27,7 @@ module NPC(
     input   [31:2]pc,
     input   [25:0]Instr,
     input   [31:0]extend,
-    output  [31:2]npc
+    output  reg [31:2]npc
     );
 
     always@(branch or jump or zero or pc or Instr or extend)
