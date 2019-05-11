@@ -26,10 +26,12 @@ module PC(
     input   [31:2]NPC,
     output  reg [31:2]PC
     );
+    initial
+        PC <= 30'b110000_0000_00;
     always@(posedge clk or negedge Reset)
     begin
-        if(Reset==1'b0)
-            PC <= 30'b110000_0000_0000;
+        if(Reset==1'b1)
+            PC <= 30'b110000_0000_00;
         else
             PC <= NPC;
     end

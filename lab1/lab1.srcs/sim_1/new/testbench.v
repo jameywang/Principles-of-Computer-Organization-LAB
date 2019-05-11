@@ -27,8 +27,10 @@ module testbench(
     initial
     begin
         clk = 1'b0;
-        reset = 0;
+        reset = 1'b0;
     end
     always #20
+    begin
         clk = ~clk;
+    end
 endmodule
