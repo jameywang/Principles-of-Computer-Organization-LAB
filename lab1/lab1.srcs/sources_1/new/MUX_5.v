@@ -26,5 +26,5 @@ module MUX_5(
     input   choose,
     output  [4:0]out
     );
-    assign out = (choose == 1b'0) ? a0 : a1;
+    assign out = (choose == 1'b0) ? a0 : a1;
 endmodule
