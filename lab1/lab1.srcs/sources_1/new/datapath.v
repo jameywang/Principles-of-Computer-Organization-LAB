@@ -21,6 +21,8 @@
 
 
 module datapath(
-
+    input   clk,
+    input   reset,
+    input   
     );
 endmodule

@@ -22,7 +22,7 @@
 
 module ALU_Control(
     input   [2:0]ALUop,
-    input   [5:0]Instr
+    input   [5:0]Instr,
     output  [2:0]ALUctr
     );
 
@@ -35,6 +35,6 @@ module ALU_Control(
         else if(ALUop == 3'b011)
             ALUctr = 3'b011;
         else if(ALUop == 3'b111)
-            ALUctr = 3'b111;
+            ALUctr = 3'b111; 
     end
 endmodule
