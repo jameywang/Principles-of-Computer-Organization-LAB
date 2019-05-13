@@ -28,7 +28,7 @@ module PC(
     );
     initial
         PC <= 30'b110000_0000_00;
-    always@(posedge clk or negedge Reset)
+    always@(posedge clk or posedge Reset)
     begin
         if(Reset==1'b1)
             PC <= 30'b110000_0000_00;

@@ -6,9 +6,9 @@
   <File Type="OPT-DCP" Name="decoder_opt.dcp"/>
   <File Type="OPT-HWDEF" Name="decoder.hwdef"/>
   <File Type="PWROPT-DCP" Name="decoder_pwropt.dcp"/>
+  <File Type="BG-BGN" Name="decoder.bgn"/>
   <File Type="PLACE-DCP" Name="decoder_placed.dcp"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="decoder_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BGN" Name="decoder.bgn"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="decoder_postplace_pwropt.dcp"/>
   <File Type="BG-BIN" Name="decoder.bin"/>
   <File Type="PHYSOPT-DCP" Name="decoder_physopt.dcp"/>

@@ -23,14 +23,14 @@
 module testbench(
     );
     reg reset,clk;
-    MIPS mips(clk,reset);
     initial
     begin
         clk = 1'b0;
-        reset = 1'b0;
+        reset = 1'b1;
+        #40
+        reset=1'b0;
     end
+    MIPS mips(clk,reset);
     always #20
-    begin
         clk = ~clk;
-    end
 endmodule

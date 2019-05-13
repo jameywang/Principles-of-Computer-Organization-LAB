@@ -23,8 +23,8 @@
 module Register(
     input   [4:0]addr1,
     input   [4:0]addr2,
-    input   [4:0]addr,
-    input   [31:0]data,
+    input   [4:0]writeaddr,
+    input   [31:0]writedata,
     input   RegWrite,
     input   clk,
     output  [31:0]busA,
@@ -41,7 +41,7 @@ module Register(
 
     always@(posedge clk)
     begin
-        if(RegWrite &&(addr!=5'b0))      //do not change reg[0]
-            register[addr] <= data;
+        if(RegWrite &&(writeaddr!=5'b0))      //do not change reg[0]
+            register[writeaddr] <= writedata;
     end
 endmodule

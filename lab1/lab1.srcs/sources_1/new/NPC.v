@@ -25,17 +25,15 @@ module NPC(
     input   jump,
     input   zero,
     input   [31:2]pc,
-    input   [25:0]Instr,
-    input   [31:0]extend,
+    input   [31:0]Instr,
     output  reg [31:2]npc
     );
-
-    always@(branch or jump or zero or pc or Instr or extend)
+    always@(branch or jump or zero or pc or Instr)
     begin
         if(jump == 1'b1)
             npc <= {{pc[31:28]},{Instr[25:0]}};
         else if(branch == 1'b1 && zero == 1'b1)
-            npc <= pc + 1 + {{extend[31:0]},2'b0};
+            npc <= pc + 1 + {{14{Instr[15]}},Instr[15:0]};
         else if(branch == 1'b0)
             npc <= pc +1;
 

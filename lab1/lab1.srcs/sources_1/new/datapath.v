@@ -54,7 +54,7 @@ module datapath(
     MUX_5 mux(Instr[20:16],Instr[15:11],RegDst,mux1out);
     Register register(Instr[25:21],Instr[20:16],mux1out,wb,RegWrite,clk,BusA,BusB);
     PC pc1(clk,reset,npc,pc);
-    NPC npc1(Branch,Jump,zero,pc,Instr[25:0],extend1,npc);
+    NPC npc1(Branch,Jump,zero,pc,Instr[31:0],npc);
     MUX_32 mux1 (BusB,extend1,ALUSrc,data1);
     MUX_32 mux2 (aluresult,dmout,MemtoReg,wb);
     
