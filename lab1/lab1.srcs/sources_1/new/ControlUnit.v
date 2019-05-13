@@ -33,12 +33,13 @@ module ControlUnit(
     output   Extop
     );
     assign  Jump = (Instr == 6'b000010) ? 1 : 0;
-    assign  Branch = (Instr == 6'b000010) ? 1 : 0;
+    assign  Branch = (Instr == 6'b000100) ? 1 : 0;
     assign  MemtoReg = (Instr == 6'b100011) ? 1 : 0;
     assign  MemWrite = (Instr == 6'b101011) ? 1 : 0;
-    assign  ALUSrc = (Instr == 6'b100011) ? 1 : (Instr == 6'b101011) ? 1 : 0;
+    assign  ALUSrc = (Instr == 6'b000000) ? 0 : (Instr == 6'b000100) ? 0 : 1;
+    assign  Extop = (Instr == 6'b001001) ? 1'b0 : (Instr == 6'b001101) ? 0 : 1;
     assign  RegWrite = (Instr == 6'b101011) ? 0 : (Instr == 6'b000100) ? 0 : (Instr == 6'b000010) ? 0 : 1;
-    assign  RegDst = (Instr == 6'b100011) ? 0 : 1;
+    assign  RegDst = (Instr == 6'b000000) ? 1 : 0;
     assign  ALUop = (Instr == 6'b000000) ? 3'b001 : 3'b000;
-    assign  Extop = (Instr == 6'b100011) ? 1'b1 : (Instr == 6'b101011) ? 1'b1 : 0;
+    
 endmodule
