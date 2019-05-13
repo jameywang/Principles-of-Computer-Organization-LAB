@@ -26,8 +26,16 @@ module ALU_Control(
     output  [2:0]ALUctr
     );
 
-    assign ALUctr = (ALUop == 3'b001) ? 3'b001 :
-                    (ALUop == 3'b010) ? 3'b010 :
-                    (ALUop == 3'b011) ? 3'b011 :
-                    (ALUop == 3'b111) ? 3'b111 : 3'b110;
+    always@(ALUop or Instr or ALUctr)
+    begin
+        if(ALUop == 3'b001)
+            ALUctr <= 3'b001;
+        else if(ALUop == 3'b010)
+            ALUctr <= 3'b010;
+        else if(ALUop == 3'b011)
+            ALUctr <= 3'b011;
+        else if(ALUop == 3'b111)
+            ALUctr <= 3'b111;
+        else if
+    end
 endmodule
