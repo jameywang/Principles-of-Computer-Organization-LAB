@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a35tcsg324-1" LaunchTime="1556351870">
-  <File Type="PA-TCL" Name="decoder.tcl"/>
   <File Type="BITSTR-BMM" Name="decoder_bd.bmm"/>
-  <File Type="REPORTS-TCL" Name="decoder_reports.tcl"/>
+  <File Type="PA-TCL" Name="decoder.tcl"/>
   <File Type="OPT-DCP" Name="decoder_opt.dcp"/>
+  <File Type="REPORTS-TCL" Name="decoder_reports.tcl"/>
   <File Type="OPT-HWDEF" Name="decoder.hwdef"/>
-  <File Type="PWROPT-DCP" Name="decoder_pwropt.dcp"/>
   <File Type="BG-BGN" Name="decoder.bgn"/>
+  <File Type="PWROPT-DCP" Name="decoder_pwropt.dcp"/>
   <File Type="PLACE-DCP" Name="decoder_placed.dcp"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="decoder_incremental_reuse_pre_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="decoder_postplace_pwropt.dcp"/>

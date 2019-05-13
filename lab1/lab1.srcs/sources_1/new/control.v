@@ -36,5 +36,5 @@ module control(
     wire [2:0]ALUop;
     
     ControlUnit controlunit(Instr,ALUop,Jump,Branch,MemtoReg,MemWrite,ALUSrc,RegWrite,RegDst,ExtOp);
-    ALU_Control alucontrol(ALUop,Instr,ALUctr);
+    ALU_Control alucontrol(ALUop,func,ALUctr);
 endmodule

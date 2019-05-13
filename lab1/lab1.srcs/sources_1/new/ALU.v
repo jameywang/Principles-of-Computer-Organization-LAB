@@ -24,24 +24,16 @@ module ALU(
     input   [31:0]data1,
     input   [31:0]data2,
     input   [2:0]ALUctr,
-    output  reg [31:0]result,
-    output  reg zero
+    output  [31:0]result,
+    output  zero
     );
 
-    always@(data1 or data2 or ALUctr)
-    begin
-        if(ALUctr==3'b001)
-            result <= data1 + data2;
-        else if(ALUctr==3'b010)
-            result <= data1 & data2;
-        else if(ALUctr==3'b101)
-            result <= data1 - data2;
-        else if(ALUctr==3'b011)
-            result <= data1 | data2;
-        else if(ALUctr==3'b111)
-            result <= (data1 < data2) ? 32'b1 : 32'b0;
-        
-        zero <= (result == 32'b0) ? 1'b0 : 1'b1;
+    assign result = (ALUctr==3'b001) ? data1 + data2 :
+                    (ALUctr==3'b010) ? data1 & data2 :
+                    (ALUctr==3'b101) ? data1 - data2 :
+                    (ALUctr==3'b011) ? data1 | data2 :
+                    (ALUctr==3'b111 || ALUctr==3'b000) ? (data1 < data2) ? 32'b1 : 32'b0 : 32'b0;
+    
+    assign zero = (result == 32'b0) ? 1'b0 : 1'b1;
 
-    end
 endmodule
