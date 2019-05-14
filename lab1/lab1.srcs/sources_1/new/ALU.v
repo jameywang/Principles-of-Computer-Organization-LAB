@@ -27,12 +27,15 @@ module ALU(
     output  [31:0]result,
     output  zero
     );
-
+    
+    wire signed a = data1;
+    wire signed b = data2;
     assign result = (ALUctr==3'b001) ? data1 + data2 :
                     (ALUctr==3'b010) ? data1 & data2 :
                     (ALUctr==3'b101) ? data1 - data2 :
                     (ALUctr==3'b011) ? data1 | data2 :
-                    (ALUctr==3'b111 || ALUctr==3'b000) ? (data1 < data2) ? 32'b1 : 32'b0 : 32'b0;
+                    (ALUctr==3'b000) ? ((data1 < data2) ? 32'b1 : 32'b0) :
+                    (ALUctr==3'b111) ? ((a < b) ? 32'b1 : 32'b0) : 32'b0;
     
     assign zero = (result == 32'b0) ? 1'b0 : 1'b1;
 
