@@ -27,7 +27,7 @@ module im_4k(addr,dout);
     reg     [31:0]im[1023:0];
 
     initial
-        $readmemh("D:/verilog/lab/lab1/code.txt",im);
+        $readmemh("C:/files/PA-LAB/lab1/code.txt",im);
     assign dout = im[addr];
     
     
