@@ -29,7 +29,7 @@ module NPC(
     output  [31:2]npc
     );
     assign npc = (jump == 1'b1) ? {{pc[31:28]},{Instr[25:0]}} :
-                 (branch == 1'b0) ? pc +1:
-                 (zero  ==  1'b0) ? pc + 1 + {{14{Instr[15]}},Instr[15:0]} :pc+1;
+                 (branch == 1'b0 && jump == 1'b0) ? pc +1:
+                 (zero  ==  1'b0 && branch == 1'b1) ? pc + 1 + {{14{Instr[15]}},Instr[15:0]} :pc+1;
     
 endmodule

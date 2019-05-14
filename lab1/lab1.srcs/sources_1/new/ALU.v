@@ -28,8 +28,8 @@ module ALU(
     output  zero
     );
     
-    wire signed a = data1;
-    wire signed b = data2;
+    wire signed [31:0] a = data1;
+    wire signed [31:0] b = data2;
     assign result = (ALUctr==3'b001) ? data1 + data2 :
                     (ALUctr==3'b010) ? data1 & data2 :
                     (ALUctr==3'b101) ? data1 - data2 :
