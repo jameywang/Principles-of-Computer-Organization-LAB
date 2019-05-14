@@ -40,10 +40,11 @@ module ControlUnit(
     assign  Extop = (Instr == 6'b001101) ? 0 : 1;
     assign  RegWrite = (Instr == 6'b101011) ? 0 : (Instr == 6'b000100) ? 0 : (Instr == 6'b000010) ? 0 : 1;
     assign  RegDst = (Instr == 6'b000000) ? 1 : 0;
-    assign  ALUop = (Instr == 6'b000000) ? 3'b001 : (Instr == 6'b001101) ? 3'b010 : (Instr == 6'b000100) ? 3'b011 : 3'b000;
+    assign  ALUop = (Instr == 6'b000000) ? 3'b001 : (Instr == 6'b001101) ? 3'b010 : (Instr == 6'b000100) ? 3'b011 : (Instr == 6'b001111) ? 3'b100 : 3'b000;
     /*ori    010 |
       R      001 
       beq    011 -
       others 000 +
+      lui    100
     */
 endmodule
