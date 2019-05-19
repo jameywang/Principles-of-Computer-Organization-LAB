@@ -35,6 +35,7 @@ module ALU(
                     (ALUctr==3'b101) ? data1 - data2 :
                     (ALUctr==3'b011) ? data1 | data2 :
                     (ALUctr==3'b100) ? {data2[15:0],16'b0} :
+                    (ALUctr==3'b110) ? data1^data2 :
                     (ALUctr==3'b000) ? ((data1 < data2) ? 32'b1 : 32'b0) :
                     (ALUctr==3'b111) ? ((a < b) ? 32'b1 : 32'b0) : 32'b0;
     

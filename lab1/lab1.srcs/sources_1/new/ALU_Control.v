@@ -36,6 +36,7 @@ module ALU_Control(
             (ALUop == 3'b001 && Instr == 6'b100101) ? 3'b011 : 
             (ALUop == 3'b001 && Instr == 6'b101010) ? 3'b111 :
             (ALUop == 3'b001 && Instr == 6'b100001) ? 3'b001 :
+            (ALUop == 3'b001 && Instr == 6'b100110) ? 3'b110 :
             (ALUop == 3'b001 && Instr == 6'b101011) ? 3'b000 : 3'b110;
 /*
 111 slt
