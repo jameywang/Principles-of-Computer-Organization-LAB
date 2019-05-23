@@ -21,7 +21,7 @@
 
 
 module ID(
-    input   [31:0]pc4;
-    input   [31:0]instr;
+    input   [31:0]pc4,
+    input   [31:0]instr
     );
 endmodule
