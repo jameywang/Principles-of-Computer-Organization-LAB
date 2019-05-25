@@ -28,19 +28,19 @@ module EXE(
     input   ALUSrc,
     input   [2:0]aluctr,
     input   clk,
-    output  [31:0]pc4,
+    input   jump,
+    input   zero,
+    input   branch,
     output  zero,
     output  [31:0]aluresult,
     output  [31:0]extend1,
-    output  npcsign
+    output  npcsign,
+    output  npc
     );
-    
     wire    [31:0]muxout;
 
-    MUX_32 MUX_32(busB,extend,ALUSrc,muxout,zero);
-    ALU ALU([31:0]busA,[31:0]muxout,[2:0]aluctr,[31:0]aluresult);
-    always@(posedge clk)
-    begin
-        pc4 <= pc;
-    end
+    MUX_32 MUX_32(busB,extend,ALUSrc,muxout);
+    ALU ALU(busA,muxout,aluctr,aluresult,zero);
+    NPC NPC(extend,pc,zero,npc,npcsign);
+    
 endmodule
