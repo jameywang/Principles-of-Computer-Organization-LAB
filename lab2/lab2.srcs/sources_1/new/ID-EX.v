@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:34:04
+// Create Date: 2019/05/25 17:58:22
 // Design Name: 
-// Module Name: ID
+// Module Name: ID-EX
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,25 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ID(
+module IDEX(
     input   clk,
     input   [31:0]pc4,
-    input   [31:0]instr,
-    input   RegDst,
-    input   extop,
-    input   [31:0]writeback,
+    input   [31:0]busA,
+    input   [31:0]busB,
+    input   [31:0]extend,
     output  [31:0]pc,
-    output  [31:0]busA,
-    output  [31:0]busB,
-    output  [31:0]extend
+    output  [31:0]busA1,
+    output  [31:0]busB1,
+    output  [31:0]extend1
     );
-    wire    [4:0]muxout;
 
-    MUX_5 mux(instr[20:16],instr[15:11],RegDst,muxout);
-    Register Register(Instr[25:21],Instr[20:16],muxout,writeback,clk,busA,busB);
-    Extend  Extend(instr[15:0],extop,extend);
     always@(posedge clk)
     begin
         pc <= pc4;
+        busA1 <= busA;
+        busB1 <= busB;
+        extend1 <= extend;
     end
 endmodule

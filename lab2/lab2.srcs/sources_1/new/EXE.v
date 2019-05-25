@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:34:23
+// Create Date: 2019/05/25 18:06:14
 // Design Name: 
-// Module Name: IF
+// Module Name: EXE
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,26 +20,27 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module IF(
+module EXE(
+    input   [31:0]pc,
+    input   [31:0]busA,
+    input   [31:0]busB,
+    input   [31:0]extend,
+    input   ALUSrc,
+    input   [2:0]aluctr,
     input   clk,
-    input   reset,
-    input   sign,
-    input   [31:2]npc,
-    output  [31:2]if_id_instr,
-    output  [31:2]if_id_pc4
+    output  [31:0]pc4,
+    output  zero,
+    output  [31:0]aluresult,
+    output  [31:0]extend1,
+    output  npcsign
     );
-    wire    [31:2]npc1;
-    wire    [31:0]instr;
-    wire    [31:0]pc4;
-    wire    [31:2]npc2;
     
-    MUX30 MUX30(pc4,npc,sign,npc1);
-    PC  PC(npc1,reset,clk,npc2);
-    IM IM(npc2[11:2],if_id_pc4);
+    wire    [31:0]muxout;
 
+    MUX_32 MUX_32(busB,extend,ALUSrc,muxout,zero);
+    ALU ALU([31:0]busA,[31:0]muxout,[2:0]aluctr,[31:0]aluresult);
     always@(posedge clk)
     begin
-        if_id_instr <= npc2 + 1;
-        pc4 <= npc2 + 1;
+        pc4 <= pc;
     end
 endmodule
