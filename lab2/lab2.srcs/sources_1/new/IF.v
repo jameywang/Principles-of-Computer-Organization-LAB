@@ -23,27 +23,21 @@
 module IF(
     input   clk,
     input   reset,
-    input   IFlash,
-    input   branch,
-    input   jump,
-    input   zero,
-    output  [31:0]if_id_instr,
+    input   sign,
+    input   [31:2]npc,
+    output  [31:2]if_id_instr,
     output  [31:2]if_id_pc4
     );
-    wire    [31:2]PC;
-    wire    [31:2]NPC;
+    wire    [31:2]npc1;
     wire    [31:0]instr;
+    wire    [31:0]pc4;
+    wire    [31:2]npc2;
     
-    im_4k im_4k(PC[11:2],instr);
-    NPC NPC(branch,jump,zero,PC,instr,NPC);
+    MUX30 MUX30(npc,pc4,sign,npc1);
+    PC  PC(npc1,reset,clk,npc2);
+    IM IM(npc2[11:2],if_id_pc4);
     
-    initial
-        PC <= 30'b110000_0000_00;
+    assign  if_id_instr = npc2 + 1;
+    assign  pc4 = npc2 + 1;
 
-    always@(posedge clk or posedge reset)
-    begin
-        PC <= (reset==1'b1) ? 30'b110000_0000_00 : NPC;
-        if_id_pc4 <= PC+1;
-        instr <= (IFlash==1) ? 0 : NPC;
-    end
 endmodule

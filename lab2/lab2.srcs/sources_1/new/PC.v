@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:33:46
+// Create Date: 2019/05/25 09:07:57
 // Design Name: 
-// Module Name: NPC
+// Module Name: PC
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module NPC(
-    input   branch,
-    input   jump,
-    input   zero,
-    input   [31:2]pc,
-    input   [31:0]Instr,
-    output  [31:2]npc
+module PC(
+    input   [31:2]npc,
+    input   reset,
+    input   clk,
+    output  reg [31:2]pc
     );
-    assign npc = (jump == 1'b1) ? {{pc[31:28]},{Instr[25:0]}} :
-                 (branch == 1'b0 && jump == 1'b0) ? pc +1:
-                 (zero  ==  1'b0 && branch == 1'b1) ? pc + 1 + {{14{Instr[15]}},Instr[15:0]} :pc+1;
-    
+
+    initial
+        PC <= 30'b110000_0000_00;
+    always@(posedge clk or posedge Reset)
+    begin
+        if(Reset==1'b1)
+            PC <= 30'b110000_0000_00;
+        else
+            PC <= NPC;
+    end
 endmodule
