@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/25 20:07:51
+// Create Date: 2019/05/25 21:42:51
 // Design Name: 
-// Module Name: EX-MEM
+// Module Name: DM
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,21 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module EXMEM(
-    input   clk,
-    input   [31:0]pc,
-    input   zero,
-    input   [31:0]aluresult,
-    input   [31:0]busB,
-    output  [31:0]pc1,
-    output  [31:0]aluresult1,
-    output  [31:0]busB1
-    );
+module dm_4k(addr,din,we,clk,dout);
+    input   [11:2]addr;
+    input   [31:0]din;
+    input   we;
+    input   clk;
 
+    output  [31:0]dout;
+
+    reg     [31:0]dm[1023:0];
+
+    assign dout = dm[addr];
     always@(posedge clk)
-    begin
-        pc1 <= pc;
-        busB1 <= busB;
-        aluresult1 <= aluresult;
-    end
+        begin
+            if(we)
+                dm[addr] <= din;
+        end
+
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/25 20:07:51
+// Create Date: 2019/05/25 21:43:33
 // Design Name: 
-// Module Name: EX-MEM
+// Module Name: MEMWB
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,21 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module EXMEM(
+module MEMWB(
     input   clk,
-    input   [31:0]pc,
-    input   zero,
+    input   [31:0]data,
     input   [31:0]aluresult,
-    input   [31:0]busB,
-    output  [31:0]pc1,
-    output  [31:0]aluresult1,
-    output  [31:0]busB1
+    output  [31:0]data1,
+    output  [31:0]aluresult1
     );
 
     always@(posedge clk)
     begin
-        pc1 <= pc;
-        busB1 <= busB;
+        data1 <= data;
         aluresult1 <= aluresult;
     end
 endmodule
