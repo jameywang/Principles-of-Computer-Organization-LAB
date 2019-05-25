@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:36:03
+// Create Date: 2019/05/25 09:29:06
 // Design Name: 
-// Module Name: IF-ID
+// Module Name: MIPS
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module IFID(
-    input   clk,
-    input   [31:0]instr,
-    input   [31:2]pc,
-    output  instr1,
-    output  [31:0]pc4
+module MIPS(
+
     );
-    always@(posedge clk)
-    begin
-      instr1 <= instr;
-      pc4 <= pc;
-    end
 endmodule

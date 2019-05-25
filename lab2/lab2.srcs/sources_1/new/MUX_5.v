@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:36:03
+// Create Date: 2019/05/25 09:41:28
 // Design Name: 
-// Module Name: IF-ID
+// Module Name: MUX_5
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module IFID(
-    input   clk,
-    input   [31:0]instr,
-    input   [31:2]pc,
-    output  instr1,
-    output  [31:0]pc4
+module MUX_5(
+    input   [4:0]a0,
+    input   [4:0]a1,
+    input   choose,
+    output  [4:0]out
     );
-    always@(posedge clk)
-    begin
-      instr1 <= instr;
-      pc4 <= pc;
-    end
+    assign out = (choose == 1'b0) ? a0 : a1;
 endmodule

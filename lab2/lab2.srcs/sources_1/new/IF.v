@@ -33,7 +33,7 @@ module IF(
     wire    [31:0]pc4;
     wire    [31:2]npc2;
     
-    MUX30 MUX30(npc,pc4,sign,npc1);
+    MUX30 MUX30(pc4,npc,sign,npc1);
     PC  PC(npc1,reset,clk,npc2);
     IM IM(npc2[11:2],if_id_pc4);
     

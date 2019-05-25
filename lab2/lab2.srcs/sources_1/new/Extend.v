@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/20 20:36:03
+// Create Date: 2019/05/25 09:41:59
 // Design Name: 
-// Module Name: IF-ID
+// Module Name: Extend
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module IFID(
-    input   clk,
-    input   [31:0]instr,
-    input   [31:2]pc,
-    output  instr1,
-    output  [31:0]pc4
+module Extend(
+    input   [15:0]instr,
+    input   extop,
+    output  [31:0]dout
     );
-    always@(posedge clk)
-    begin
-      instr1 <= instr;
-      pc4 <= pc;
-    end
+    
+    assign dout = (extop==1'b0) ? {(16'b0),instr[15:0]} : {{16{instr[15]}},instr[15:0]};
 endmodule
