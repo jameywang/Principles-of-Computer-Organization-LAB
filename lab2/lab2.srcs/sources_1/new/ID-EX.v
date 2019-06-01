@@ -26,10 +26,10 @@ module IDEX(
     input   [31:0]busA,
     input   [31:0]busB,
     input   [31:0]extend,
-    output  [31:0]pc,
-    output  [31:0]busA1,
-    output  [31:0]busB1,
-    output  [31:0]extend1
+    output  reg[31:0]pc,
+    output  reg[31:0]busA1,
+    output  reg[31:0]busB1,
+    output  reg[31:0]extend1
     );
 
     always@(posedge clk)

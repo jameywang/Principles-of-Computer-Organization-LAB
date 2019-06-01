@@ -24,8 +24,8 @@ module MEMWB(
     input   clk,
     input   [31:0]data,
     input   [31:0]aluresult,
-    output  [31:0]data1,
-    output  [31:0]aluresult1
+    output  reg [31:0]data1,
+    output  reg [31:0]aluresult1
     );
 
     always@(posedge clk)

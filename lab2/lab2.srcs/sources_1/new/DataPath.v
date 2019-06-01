@@ -41,7 +41,6 @@ module DataPath(
     wire    [31:0]if_id_pc4;
     wire    [31:0]ifid_instr;
     wire    [31:0]ifid_pc;
-    wire    [31:0]writeback;
     wire    [31:0]IDPC;
     wire    [31:0]busA;
     wire    [31:0]busB;
@@ -55,14 +54,15 @@ module DataPath(
     wire    [31:0]EXEbusB;
     wire    jumpsign1;
     wire    [31:0]EXEMEMaluresult;
-    wire    [31:0]EXEbusB;
     wire    [31:0]MEMOUT;
     wire    [31:0]MEMout1;
+    wire    [31:0]MEMWBout;
+    wire    [31:0]MEMWBout1;
     IF IF(clk,reset,jumpsign,npc,if_id_instr,if_id_pc4);
     IFID IFID(clk,if_id_instr,if_id_pc4,ifid_instr,ifid_pc);
     ID ID(clk,ifid_pc,ifid_instr,RegDst,extop,writeback,IDPC,busA,busB,extend);
     IDEX IDEX(clk,IDPC,busA,busB,extend,IDEX_PC,IDEX_BUSA,IDEX_BUSB,IDEX_EXTEND);
-    EXE EXE(IDEX_PC,IDEX_BUSA,IDEX_BUSB,IDEX_EXTEND,ALUSrc,aluctr,clk,jump,branch,EXEaluresult,EXEbusB,jumpsign1,npc1);
+    EXE EXE(IDEX_PC,IDEX_BUSA,IDEX_BUSB,IDEX_EXTEND,ALUSrc,ALUctr,clk,Jump,Branch,EXEaluresult,EXEbusB,jumpsign1,npc1);
     EXMEM EXMEM(clk,npc1,EXEaluresult,EXEbusB,jumpsign1,npc,EXEMEMaluresult,EXEbusB,jumpsign);
     MEM MEM(EXEMEMaluresult,EXEbusB,MemWrite,clk,MEMOUT,MEMout1);
     MEMWB MEMEWB(clk,MEMOUT,MEMout1,MEMWBout,MEMWBout1);

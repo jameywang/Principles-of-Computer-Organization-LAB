@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/25 20:07:51
+// Create Date: 2019/06/01 19:36:24
 // Design Name: 
-// Module Name: EX-MEM
+// Module Name: testbench
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,23 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module EXMEM(
-    input   clk,
-    input   [31:0]pc,
-    input   [31:0]aluresult,
-    input   [31:0]busB,
-    input   sign,
-    output  reg [31:0]pc1,
-    output  reg [31:0]aluresult1,
-    output  reg [31:0]busB1,
-    output  reg sign1
+module testbench(
     );
-
-    always@(posedge clk)
+    reg reset,clk;
+    initial
     begin
-        pc1 <= pc;
-        sign1 <= sign;
-        busB1 <= busB;
-        aluresult1 <= aluresult;
+        clk = 1'b0;
+        reset = 1'b1;
+        #40
+        reset=1'b0;
     end
+    MIPS mips(clk,reset);
+    always #20
+        clk = ~clk;
 endmodule

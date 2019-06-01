@@ -31,10 +31,11 @@ module EXE(
     input   jump,
     input   branch,
     output  [31:0]aluresult,
-    output  [31:0]busB,
+    output  [31:0]outbusB,
     output  npcsign,
     output  npc
     );
+    assign outbusB = busB;
     wire    [31:0]muxout;
     wire    zero;
     MUX_32 MUX_32(busB,extend,ALUSrc,muxout);

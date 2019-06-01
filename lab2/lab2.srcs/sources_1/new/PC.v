@@ -21,19 +21,19 @@
 
 
 module PC(
-    input   [31:2]npc,
+    input   [31:0]npc,
     input   reset,
     input   clk,
-    output  reg [31:2]pc
+    output  reg [31:0]pc
     );
 
     initial
-        PC <= 30'b110000_0000_00;
-    always@(posedge clk or posedge Reset)
+        pc <= 30'b110000_0000_00;
+    always@(posedge clk or posedge reset)
     begin
-        if(Reset==1'b1)
-            PC <= 30'b110000_0000_00;
+        if(reset==1'b1)
+            pc <= 30'b110000_0000_00;
         else
-            PC <= NPC;
+            pc <= npc;
     end
 endmodule

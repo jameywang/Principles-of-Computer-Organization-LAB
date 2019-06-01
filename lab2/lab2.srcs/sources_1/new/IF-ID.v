@@ -24,8 +24,8 @@ module IFID(
     input   clk,
     input   [31:0]instr,
     input   [31:2]pc,
-    output  instr1,
-    output  [31:0]pc4
+    output  reg instr1,
+    output  reg [31:0]pc4
     );
     always@(posedge clk)
     begin
