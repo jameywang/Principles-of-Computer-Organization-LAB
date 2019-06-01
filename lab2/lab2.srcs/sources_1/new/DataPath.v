@@ -31,8 +31,8 @@ module DataPath(
     input   ALUSrc,
     input   RegWrite,
     input   RegDst,
-    input   extop
-    output  [31:0]Instr,
+    input   extop,
+    output  [31:0]Instr
     );
     wire    [31:0]npc;
     wire    jumpsign;
