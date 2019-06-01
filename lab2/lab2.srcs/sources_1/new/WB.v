@@ -27,5 +27,5 @@ module WB(
     output  [31:0]writeback
     );
 
-    MUX32 MUX32(data[31:0],aluresult[31:0],MemtoReg,writeback);
+    MUX_32 MUX_32(data[31:0],aluresult[31:0],MemtoReg,writeback);
 endmodule
