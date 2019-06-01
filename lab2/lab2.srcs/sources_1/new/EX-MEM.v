@@ -23,17 +23,19 @@
 module EXMEM(
     input   clk,
     input   [31:0]pc,
-    input   zero,
     input   [31:0]aluresult,
     input   [31:0]busB,
+    input   sign,
     output  [31:0]pc1,
     output  [31:0]aluresult1,
-    output  [31:0]busB1
+    output  [31:0]busB1,
+    output  sign1
     );
 
     always@(posedge clk)
     begin
         pc1 <= pc;
+        sign1 <= sign;
         busB1 <= busB;
         aluresult1 <= aluresult;
     end

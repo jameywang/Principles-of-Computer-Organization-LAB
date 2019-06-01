@@ -29,16 +29,14 @@ module EXE(
     input   [2:0]aluctr,
     input   clk,
     input   jump,
-    input   zero,
     input   branch,
-    output  zero,
     output  [31:0]aluresult,
     output  [31:0]busB,
     output  npcsign,
     output  npc
     );
     wire    [31:0]muxout;
-
+    wire    zero;
     MUX_32 MUX_32(busB,extend,ALUSrc,muxout);
     ALU ALU(busA,muxout,aluctr,aluresult,zero);
     NPC NPC(extend,pc,zero,npc,npcsign);
