@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/05/25 20:29:22
+// Create Date: 2019/06/01 17:58:32
 // Design Name: 
-// Module Name: MEM
+// Module Name: WB
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,15 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MEM(
-    input   [31:0]addr,
-    input   [31:0]writedata,
-    input   we,
-    input   clk,
-    output  dout,
-    output  [31:0]aluresult
+module WB(
+    input   [31:0]data,
+    input   [31:0]aluresult,
+    input   MemtoReg,
+    output  [31:0]writeback
     );
-    
-    assign aluresult = addr;
-    dm_4k DM(addr[11:2],writedata[31:0],we,clk,dout);
+
+    MUX32 MUX32([31:0]data,[31:0]aluresult,MemtoReg,writeback);
 endmodule

@@ -23,8 +23,8 @@
 module IF(
     input   clk,
     input   reset,
-    input   sign,
-    input   [31:2]npc,
+    input   sign,      //选择pc+4还是npc
+    input   [31:0]npc, //下一条指令
     output  [31:2]if_id_instr,
     output  [31:2]if_id_pc4
     );
@@ -33,13 +33,9 @@ module IF(
     wire    [31:0]pc4;
     wire    [31:2]npc2;
     
-    MUX30 MUX30(pc4,npc,sign,npc1);
+    MUX32 MUX32(pc4,npc,sign,npc1);
     PC  PC(npc1,reset,clk,npc2);
     IM IM(npc2[11:2],if_id_pc4);
 
-    always@(posedge clk)
-    begin
-        if_id_instr <= npc2 + 1;
-        pc4 <= npc2 + 1;
-    end
+    assign pc4 = npc2+4;
 endmodule
