@@ -27,7 +27,11 @@ module MEMWB(
     output  reg [31:0]data1,
     output  reg [31:0]aluresult1
     );
-
+    initial
+    begin
+        data1 = 0;
+        aluresult1 = 0;
+    end
     always@(posedge clk)
     begin
         data1 <= data;

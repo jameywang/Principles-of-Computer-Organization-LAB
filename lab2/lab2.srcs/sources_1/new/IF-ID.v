@@ -22,11 +22,16 @@
 
 module IFID(
     input   clk,
+    input   [31:0]pc,
     input   [31:0]instr,
-    input   [31:2]pc,
     output  reg instr1,
     output  reg [31:0]pc4
     );
+    initial
+    begin
+      instr1 = 0;
+      pc4 = 0;
+    end
     always@(posedge clk)
     begin
       instr1 <= instr;

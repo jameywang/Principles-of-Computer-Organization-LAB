@@ -27,7 +27,7 @@ module IM(
     reg     [31:0]im[1023:0];
 
     initial
-       $readmemh("C:/Users/CSLab/Desktop/test/Principles-of-Computer-Organization-LAB-master/lab1/code.txt",im);
+       $readmemh("C:/Users/qinmaye/Desktop/code",im);
         //    $readmemb("C:/Users/qinmaye/Desktop/code1.txt",im);
     assign dout = im[addr];
 endmodule

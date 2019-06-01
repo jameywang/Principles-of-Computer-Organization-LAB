@@ -34,5 +34,5 @@ module NPC(
                  (zero  ==  1'b0 && branch == 1'b1) ? pc + {{14{Instr[15]}},Instr[15:0]} : pc;
     assign jumpsign = (jump == 1'b1) ? 1 :
                       (branch == 1'b0 && jump == 1'b0) ? 0 :
-                      (zero  ==  1'b0 && branch == 1'b1) ? 1 : 0;
+                      (zero  ==  1'b1 && branch == 1'b1) ? 1 : 0;
 endmodule

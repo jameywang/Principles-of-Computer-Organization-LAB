@@ -32,7 +32,7 @@ module DataPath(
     input   RegWrite,
     input   RegDst,
     input   extop,
-    output  [31:0]Instr
+    output  [31:0]if_id_instr
     );
     wire    [31:0]npc;
     wire    jumpsign;
@@ -58,8 +58,8 @@ module DataPath(
     wire    [31:0]MEMout1;
     wire    [31:0]MEMWBout;
     wire    [31:0]MEMWBout1;
-    IF IF(clk,reset,jumpsign,npc,if_id_instr,if_id_pc4);
-    IFID IFID(clk,if_id_instr,if_id_pc4,ifid_instr,ifid_pc);
+    IF IF(clk,reset,jumpsign,npc,if_id_pc4,if_id_instr);
+    IFID IFID(clk,if_id_pc4,if_id_instr,ifid_instr,ifid_pc);
     ID ID(clk,ifid_pc,ifid_instr,RegDst,extop,writeback,IDPC,busA,busB,extend);
     IDEX IDEX(clk,IDPC,busA,busB,extend,IDEX_PC,IDEX_BUSA,IDEX_BUSB,IDEX_EXTEND);
     EXE EXE(IDEX_PC,IDEX_BUSA,IDEX_BUSB,IDEX_EXTEND,ALUSrc,ALUctr,clk,Jump,Branch,EXEaluresult,EXEbusB,jumpsign1,npc1);

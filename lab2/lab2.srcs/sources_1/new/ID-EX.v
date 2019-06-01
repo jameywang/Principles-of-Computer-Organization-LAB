@@ -32,6 +32,13 @@ module IDEX(
     output  reg[31:0]extend1
     );
 
+    initial
+    begin
+        pc = 0;
+        busA1 = 0;
+        busB1 = 0;
+        extend1 = 0;
+    end
     always@(posedge clk)
     begin
         pc <= pc4;

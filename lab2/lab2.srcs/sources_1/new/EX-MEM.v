@@ -31,7 +31,13 @@ module EXMEM(
     output  reg [31:0]busB1,
     output  reg sign1
     );
-
+    initial
+    begin
+        pc1 = 0;
+        sign1 = 0;
+        busB1 = 0;
+        aluresult1 = 0;
+    end
     always@(posedge clk)
     begin
         pc1 <= pc;

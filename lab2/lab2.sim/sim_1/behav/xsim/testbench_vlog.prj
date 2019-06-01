@@ -12,15 +12,12 @@ verilog xil_defaultlib  \
 "../../../../lab2.srcs/sources_1/new/ID-EX.v" \
 "../../../../lab2.srcs/sources_1/new/ID.v" \
 "../../../../lab2.srcs/sources_1/new/IF-ID.v" \
-"../../../../lab2.srcs/sources_1/new/IF.v" \
-"../../../../lab2.srcs/sources_1/new/IM.v" \
 "../../../../lab2.srcs/sources_1/new/MEM.v" \
 "../../../../lab2.srcs/sources_1/new/MEMWB.v" \
 "../../../../lab2.srcs/sources_1/new/MIPS.v" \
 "../../../../lab2.srcs/sources_1/new/MUX_32.v" \
 "../../../../lab2.srcs/sources_1/new/MUX_5.v" \
 "../../../../lab2.srcs/sources_1/new/NPC.v" \
-"../../../../lab2.srcs/sources_1/new/PC.v" \
 "../../../../lab2.srcs/sources_1/new/Register.v" \
 "../../../../lab2.srcs/sources_1/new/WB.v" \
 "../../../../lab2.srcs/sim_1/new/testbench.v" \

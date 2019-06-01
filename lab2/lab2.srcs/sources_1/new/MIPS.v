@@ -36,7 +36,7 @@ module MIPS(
     wire    [2:0]aluctr;
     wire    [31:0]data;
 
-    DataPath DataPath(clk,reset,aluctr,jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,data,extop);
+    DataPath DataPath(clk,reset,aluctr,jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,extop,data);
     Control Control(data[31:26],data[5:0],jump,branch,memtoreg,memwrite,alusrc,regwrite,regdst,aluctr,extop);
 
 endmodule
