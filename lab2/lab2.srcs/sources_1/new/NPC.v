@@ -26,12 +26,13 @@ module NPC(
     input   zero,
     input   [31:0]pc,
     input   [31:0]Instr,
-    output  jumpto,
+    input   [31:0]extend,
+    output  [31:0]jumpto,
     output  jumpsign
     );
     assign jumpto = (jump == 1'b1) ? {{pc[31:28]},{Instr[25:0]}} :
                  (branch == 1'b0 && jump == 1'b0) ? pc:
-                 (zero  ==  1'b0 && branch == 1'b1) ? pc + {{14{Instr[15]}},Instr[15:0]} : pc;
+                 (zero  ==  1'b0 && branch == 1'b1) ? pc + extend : pc;
     assign jumpsign = (jump == 1'b1) ? 1 :
                       (branch == 1'b0 && jump == 1'b0) ? 0 :
                       (zero  ==  1'b1 && branch == 1'b1) ? 1 : 0;

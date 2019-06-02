@@ -25,20 +25,23 @@ module ID(
     input   [31:0]pc4,
     input   [31:0]Instr,
     input   RegDst,
+    input   RegWrite,
     input   extop,
     input   [31:0]writeback,
     output  reg [31:0]pc,
     output  [31:0]busA,
     output  [31:0]busB,
-    output  [31:0]extend
+    output  [31:0]extend,
+    output  reg[31:0]Instr1
     );
     wire    [4:0]muxout;
 
     MUX_5 mux(Instr[20:16],Instr[15:11],RegDst,muxout);
-    Register Register(Instr[25:21],Instr[20:16],muxout,writeback,clk,busA,busB);
+    Register Register(Instr[25:21],Instr[20:16],muxout,writeback,RegWrite,clk,busA,busB);
     Extend  Extend(Instr[15:0],extop,extend);
     always@(posedge clk)
     begin
         pc <= pc4;
+        Instr1 <= Instr;
     end
 endmodule

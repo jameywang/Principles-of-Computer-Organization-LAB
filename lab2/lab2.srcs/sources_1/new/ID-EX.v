@@ -21,6 +21,7 @@
 
 
 module IDEX(
+    input   [31:0]instr,
     input   clk,
     input   [31:0]pc4,
     input   [31:0]busA,
@@ -29,7 +30,8 @@ module IDEX(
     output  reg[31:0]pc,
     output  reg[31:0]busA1,
     output  reg[31:0]busB1,
-    output  reg[31:0]extend1
+    output  reg[31:0]extend1,
+    output  reg[31:0]instr1
     );
 
     initial
@@ -38,6 +40,7 @@ module IDEX(
         busA1 = 0;
         busB1 = 0;
         extend1 = 0;
+        instr1 = 0;
     end
     always@(posedge clk)
     begin
@@ -45,5 +48,6 @@ module IDEX(
         busA1 <= busA;
         busB1 <= busB;
         extend1 <= extend;
+        instr1 <= instr;
     end
 endmodule

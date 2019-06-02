@@ -40,7 +40,7 @@ module ALU(
                     (ALUctr==3'b000) ? ((data1 < data2) ? 32'b1 : 32'b0) :
                     (ALUctr==3'b111) ? ((a < b) ? 32'b1 : 32'b0) : 32'b0;
     
-    assign zero = (result == 32'b0) ? 1'b0 : 1'b1;
+    assign zero = (result == 32'b0) ? 1'b1 : 1'b0;
 
 endmodule
 

@@ -25,7 +25,7 @@ module MEM(
     input   [31:0]writedata,
     input   we,
     input   clk,
-    output  dout,
+    output  [31:0]dout,
     output  [31:0]aluresult
     );
     

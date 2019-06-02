@@ -21,6 +21,7 @@
 
 
 module EXE(
+    input   [31:0]instr,
     input   [31:0]pc,
     input   [31:0]busA,
     input   [31:0]busB,
@@ -33,13 +34,13 @@ module EXE(
     output  [31:0]aluresult,
     output  [31:0]outbusB,
     output  npcsign,
-    output  npc
+    output  [31:0]npc
     );
     assign outbusB = busB;
     wire    [31:0]muxout;
     wire    zero;
     MUX_32 MUX_32(busB,extend,ALUSrc,muxout);
     ALU ALU(busA,muxout,aluctr,aluresult,zero);
-    NPC NPC(extend,pc,zero,npc,npcsign);
+    NPC NPC(branch,jump,zero,pc,instr,extend,npc,npcsign);
 
 endmodule

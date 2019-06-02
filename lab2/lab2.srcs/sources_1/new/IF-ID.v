@@ -24,7 +24,7 @@ module IFID(
     input   clk,
     input   [31:0]pc,
     input   [31:0]instr,
-    output  reg instr1,
+    output  reg [31:0]instr1,
     output  reg [31:0]pc4
     );
     initial
